@@ -1,28 +1,40 @@
-package Template;
+package selectionSort;
 
-import java.util.Scanner;
+public class Selection {
 
-public class TemplateForSorting 
-{
 	public static void sort(Comparable[] a)
 	{
-		// Sorting Algorithm Goes here
+		// Selection Sort Algorithm
+		
+		// Sort a[] into increasing order
+		int N = a.length;
+		for (int i = 0; i < N; i++)
+		{
+			// Exchange a[i] with the smallest entry in a[i-1..N]
+			
+			// initialize a minimum value variable
+			int min = i;
+			for (int j = i+1; j < N; j++)
+			{
+				if (less(a[j], a[min])) 
+					{
+						min = j;
+					}
+				exch(a, i, min);
+			}
+		}
 	}
 	
-	// Checking if the 1st argument is lesser than the 2nd argument
-	// if thats true, we return a boolean True, else return False
-	private static boolean less(Comparable v, Comparable w)
-	{
-		return v.compareTo(w) < 0;
-	}
-	
-	// Exchanges the position of the Element in the array 'a'
-	// given array a[], initial position 'i', final position 'j'
 	private static void exch(Comparable[] a, int i, int j) 
 	{
 		Comparable t = a[i];
 		a[i] = a[j];
 		a[j] = t;
+	}
+
+	private static boolean less(Comparable v, Comparable w)
+	{
+		return v.compareTo(w) < 0;
 	}
 	
 	private static void show(Comparable[] a)
@@ -35,7 +47,6 @@ public class TemplateForSorting
 		System.out.println();
 	}
 	
-	// Check if array sorted.
 	private static boolean isSorted(Comparable[] a)
 	{
 		// Test whether the values in array are in order
@@ -61,4 +72,5 @@ public class TemplateForSorting
 		
 		
 	}
+	
 }
